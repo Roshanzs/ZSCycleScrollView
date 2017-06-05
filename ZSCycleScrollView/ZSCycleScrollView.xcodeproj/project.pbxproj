@@ -13,9 +13,11 @@
 		8B277AC41EE4FA4B00A605A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B277AC31EE4FA4B00A605A9 /* Assets.xcassets */; };
 		8B277AC71EE4FA4B00A605A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B277AC51EE4FA4B00A605A9 /* LaunchScreen.storyboard */; };
 		8B277AD11EE4FC3B00A605A9 /* ZSCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B277AD01EE4FC3B00A605A9 /* ZSCycleScrollView.m */; };
+		C4DF84C4750FF627D164A500 /* libPods-ZSCycleScrollView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6519E63B2E4EC38E8FB5A70D /* libPods-ZSCycleScrollView.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6519E63B2E4EC38E8FB5A70D /* libPods-ZSCycleScrollView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZSCycleScrollView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B277AB41EE4FA4B00A605A9 /* ZSCycleScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZSCycleScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B277AB81EE4FA4B00A605A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8B277ABA1EE4FA4B00A605A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -27,6 +29,8 @@
 		8B277AC81EE4FA4B00A605A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B277ACF1EE4FC3B00A605A9 /* ZSCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSCycleScrollView.h; sourceTree = "<group>"; };
 		8B277AD01EE4FC3B00A605A9 /* ZSCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSCycleScrollView.m; sourceTree = "<group>"; };
+		9687E69AA48A5B44C0B8EC30 /* Pods-ZSCycleScrollView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZSCycleScrollView.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZSCycleScrollView/Pods-ZSCycleScrollView.release.xcconfig"; sourceTree = "<group>"; };
+		F9AC0F3FB22EBA1EF5D65B5E /* Pods-ZSCycleScrollView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZSCycleScrollView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZSCycleScrollView/Pods-ZSCycleScrollView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,17 +38,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4DF84C4750FF627D164A500 /* libPods-ZSCycleScrollView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F0498D6AA3A4DBC8C12CC64 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6519E63B2E4EC38E8FB5A70D /* libPods-ZSCycleScrollView.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8B277AAB1EE4FA4B00A605A9 = {
 			isa = PBXGroup;
 			children = (
 				8B277AB61EE4FA4B00A605A9 /* ZSCycleScrollView */,
 				8B277AB51EE4FA4B00A605A9 /* Products */,
+				B0D134D3BBEE52FBBE0F5DDA /* Pods */,
+				5F0498D6AA3A4DBC8C12CC64 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +104,15 @@
 			path = ZSCycleScrollView;
 			sourceTree = "<group>";
 		};
+		B0D134D3BBEE52FBBE0F5DDA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F9AC0F3FB22EBA1EF5D65B5E /* Pods-ZSCycleScrollView.debug.xcconfig */,
+				9687E69AA48A5B44C0B8EC30 /* Pods-ZSCycleScrollView.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,9 +120,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B277ACB1EE4FA4B00A605A9 /* Build configuration list for PBXNativeTarget "ZSCycleScrollView" */;
 			buildPhases = (
+				106C52AD5478ADDD80DE4710 /* [CP] Check Pods Manifest.lock */,
 				8B277AB01EE4FA4B00A605A9 /* Sources */,
 				8B277AB11EE4FA4B00A605A9 /* Frameworks */,
 				8B277AB21EE4FA4B00A605A9 /* Resources */,
+				3DD6A9EBB15F65567CEE73F9 /* [CP] Embed Pods Frameworks */,
+				268485192A4FC8350FD8632C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -154,6 +181,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		106C52AD5478ADDD80DE4710 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		268485192A4FC8350FD8632C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZSCycleScrollView/Pods-ZSCycleScrollView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3DD6A9EBB15F65567CEE73F9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZSCycleScrollView/Pods-ZSCycleScrollView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8B277AB01EE4FA4B00A605A9 /* Sources */ = {
@@ -273,6 +348,7 @@
 		};
 		8B277ACC1EE4FA4B00A605A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9AC0F3FB22EBA1EF5D65B5E /* Pods-ZSCycleScrollView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3LVRZF468V;
@@ -286,6 +362,7 @@
 		};
 		8B277ACD1EE4FA4B00A605A9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9687E69AA48A5B44C0B8EC30 /* Pods-ZSCycleScrollView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3LVRZF468V;
