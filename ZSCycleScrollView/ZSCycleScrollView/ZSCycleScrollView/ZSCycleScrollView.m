@@ -131,6 +131,14 @@
 //    }
 //}
 
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self.timer invalidate];
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(timerMenth) userInfo:nil repeats:YES];
+}
+
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
         NSLog(@"%f",scrollView.contentOffset.x);
     CGFloat offset = scrollView.contentOffset.x;
