@@ -8,9 +8,10 @@
 
 #import "ZSCycleCollectionViewCell.h"
 #import "UIImageView+WebCache.h"
-
+#import "UIView+ZSExtension.h"
 @interface ZSCycleCollectionViewCell()
 @property(nonatomic,strong)UIImageView *itemimgV;
+@property(nonatomic,strong)UILabel *itemlab;
 @end
 
 @implementation ZSCycleCollectionViewCell
@@ -26,10 +27,24 @@
 -(void)setupUI{
     self.itemimgV = [[UIImageView alloc]initWithFrame:self.bounds];
     [self.contentView addSubview:_itemimgV];
+    
+    UILabel *itemlab = [[UILabel alloc]init];
+    itemlab.textColor = [UIColor whiteColor];
+    self.itemlab = itemlab;
+    itemlab.zs_width = self.contentView.zs_width - 20;
+    itemlab.zs_height = 20;
+    itemlab.zs_bottom = self.contentView.zs_bottom - 8;
+    itemlab.zs_x = self.contentView.zs_x + 8;
+    [self.contentView addSubview:itemlab];
 }
 
 -(void)setItemimgUrl:(NSString *)itemimgUrl{
     _itemimgUrl = itemimgUrl;
     [_itemimgV sd_setImageWithURL:[NSURL URLWithString:_itemimgUrl]];
+}
+
+-(void)setTextStr:(NSString *)textStr{
+    _textStr = textStr;
+    self.itemlab.text = textStr;
 }
 @end

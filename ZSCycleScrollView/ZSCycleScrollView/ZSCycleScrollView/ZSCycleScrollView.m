@@ -61,25 +61,28 @@
     [self addSubview:mainView];
     _collectionview = mainView;
     
-    self.pagecontrol = [[UIPageControl alloc]init];
-    _pagecontrol.zs_width = screenW;
-    _pagecontrol.zs_height = 10;
-    _pagecontrol.zs_right = self.zs_right;
-    _pagecontrol.zs_bottom = self.zs_bottom - 8;
-    _pagecontrol.numberOfPages = 3;
-    _pagecontrol.currentPage = 1;
-    [self addSubview:_pagecontrol];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(timerMenth) userInfo:nil repeats:YES];
 }
 
 -(void)layoutSubviews{
     [self.collectionview scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
 
+    self.pagecontrol = [[UIPageControl alloc]init];
+    _pagecontrol.zs_width = 12 * _cycleNumber;
+    _pagecontrol.zs_height = 10;
+    _pagecontrol.zs_right = self.zs_right - 10;
+    _pagecontrol.zs_bottom = self.zs_bottom - 10;
+    _pagecontrol.numberOfPages = _cycleNumber;
+    [self addSubview:_pagecontrol];
 }
 
 -(void)setLocaImgGroup:(NSArray *)locaImgGroup{
     _locaImgGroup = locaImgGroup;
     _cycleNumber = locaImgGroup.count;
+}
+
+-(void)setTextGroup:(NSArray *)textGroup{
+    _textGroup = textGroup;
 }
 
 //定时器
@@ -102,7 +105,7 @@
     // NSLog(@"----%ld---%ld", nextItem, nextSection);
     NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:nextItem inSection:nextSection];
     [self.collectionview scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
-    
+    _pagecontrol.currentPage = nextItem;
 }
 
 
@@ -117,19 +120,9 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     ZSCycleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectioncell forIndexPath:indexPath];
         cell.itemimgUrl = _locaImgGroup[indexPath.item];
-    UILabel *lab = [[UILabel alloc]initWithFrame:cell.contentView.bounds];
-    lab.textAlignment = NSTextAlignmentCenter;
-    lab.text = [NSString stringWithFormat:@"第%ld个",(long)indexPath.item];
-    [cell.contentView addSubview:lab];
+        cell.textStr = _textGroup[indexPath.item];
     return cell;
 }
-
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    CGFloat tempoffset = scrollView.contentOffset.x;
-//    if (tempoffset >= screenW * 0.5) {
-//        
-//    }
-//}
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [self.timer invalidate];
@@ -140,13 +133,18 @@
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-        NSLog(@"%f",scrollView.contentOffset.x);
+        NSLog(@"%f",scrollView.contentOffset.x / screenW);
     CGFloat offset = scrollView.contentOffset.x;
+    _pagecontrol.currentPage = offset / screenW - 3;
     if (offset == screenW * (_cycleNumber - 1)) {
         [self.collectionview scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_cycleNumber - 1 inSection:1] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        _pagecontrol.currentPage = _cycleNumber - 1;
+
     }
     if (offset == screenW * (_cycleNumber * 2)) {
         [self.collectionview scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        _pagecontrol.currentPage = 0;
+
     }
 }
 

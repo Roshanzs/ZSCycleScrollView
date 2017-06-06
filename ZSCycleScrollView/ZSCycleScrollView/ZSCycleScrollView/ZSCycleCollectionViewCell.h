@@ -11,4 +11,5 @@
 @interface ZSCycleCollectionViewCell : UICollectionViewCell
 
 @property(nonatomic,strong)NSString *itemimgUrl;
+@property(nonatomic,strong)NSString *textStr;
 @end

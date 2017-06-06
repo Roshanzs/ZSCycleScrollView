@@ -16,4 +16,6 @@
 //本地图片数组
 @property(nonatomic,strong)NSArray *locaImgGroup;
 
+//文本数组
+@property(nonatomic,strong)NSArray *textGroup;
 @end
