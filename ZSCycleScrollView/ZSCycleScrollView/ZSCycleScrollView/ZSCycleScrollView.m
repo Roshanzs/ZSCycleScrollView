@@ -24,7 +24,6 @@
 
 @end
 
-#define MaxSections 100
 #define screenW [UIScreen mainScreen].bounds.size.width
 #define collectioncell @"collectioncell"
 @implementation ZSCycleScrollView
