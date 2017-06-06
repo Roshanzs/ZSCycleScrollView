@@ -13,6 +13,8 @@
 		8B277AC41EE4FA4B00A605A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B277AC31EE4FA4B00A605A9 /* Assets.xcassets */; };
 		8B277AC71EE4FA4B00A605A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B277AC51EE4FA4B00A605A9 /* LaunchScreen.storyboard */; };
 		8B277AD11EE4FC3B00A605A9 /* ZSCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B277AD01EE4FC3B00A605A9 /* ZSCycleScrollView.m */; };
+		8B277AD41EE5340D00A605A9 /* ZSCycleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B277AD31EE5340D00A605A9 /* ZSCycleCollectionViewCell.m */; };
+		8B277AD71EE54DA200A605A9 /* UIView+ZSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B277AD61EE54DA200A605A9 /* UIView+ZSExtension.m */; };
 		C4DF84C4750FF627D164A500 /* libPods-ZSCycleScrollView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6519E63B2E4EC38E8FB5A70D /* libPods-ZSCycleScrollView.a */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,10 @@
 		8B277AC81EE4FA4B00A605A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B277ACF1EE4FC3B00A605A9 /* ZSCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSCycleScrollView.h; sourceTree = "<group>"; };
 		8B277AD01EE4FC3B00A605A9 /* ZSCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSCycleScrollView.m; sourceTree = "<group>"; };
+		8B277AD21EE5340D00A605A9 /* ZSCycleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSCycleCollectionViewCell.h; sourceTree = "<group>"; };
+		8B277AD31EE5340D00A605A9 /* ZSCycleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSCycleCollectionViewCell.m; sourceTree = "<group>"; };
+		8B277AD51EE54DA200A605A9 /* UIView+ZSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZSExtension.h"; sourceTree = "<group>"; };
+		8B277AD61EE54DA200A605A9 /* UIView+ZSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZSExtension.m"; sourceTree = "<group>"; };
 		9687E69AA48A5B44C0B8EC30 /* Pods-ZSCycleScrollView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZSCycleScrollView.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZSCycleScrollView/Pods-ZSCycleScrollView.release.xcconfig"; sourceTree = "<group>"; };
 		F9AC0F3FB22EBA1EF5D65B5E /* Pods-ZSCycleScrollView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZSCycleScrollView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZSCycleScrollView/Pods-ZSCycleScrollView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +106,10 @@
 			children = (
 				8B277ACF1EE4FC3B00A605A9 /* ZSCycleScrollView.h */,
 				8B277AD01EE4FC3B00A605A9 /* ZSCycleScrollView.m */,
+				8B277AD21EE5340D00A605A9 /* ZSCycleCollectionViewCell.h */,
+				8B277AD31EE5340D00A605A9 /* ZSCycleCollectionViewCell.m */,
+				8B277AD51EE54DA200A605A9 /* UIView+ZSExtension.h */,
+				8B277AD61EE54DA200A605A9 /* UIView+ZSExtension.m */,
 			);
 			path = ZSCycleScrollView;
 			sourceTree = "<group>";
@@ -236,6 +246,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B277ABF1EE4FA4B00A605A9 /* ViewController.m in Sources */,
+				8B277AD71EE54DA200A605A9 /* UIView+ZSExtension.m in Sources */,
+				8B277AD41EE5340D00A605A9 /* ZSCycleCollectionViewCell.m in Sources */,
 				8B277AD11EE4FC3B00A605A9 /* ZSCycleScrollView.m in Sources */,
 				8B277ABC1EE4FA4B00A605A9 /* AppDelegate.m in Sources */,
 				8B277AB91EE4FA4B00A605A9 /* main.m in Sources */,
@@ -393,6 +405,7 @@
 				8B277ACD1EE4FA4B00A605A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
