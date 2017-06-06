@@ -20,10 +20,11 @@
 
 @property(nonatomic,strong)NSTimer *timer;
 
-@property(nonatomic,assign)int currItem;
+@property(nonatomic,strong)NSIndexPath *currindex;
 
 @end
 
+#define MaxSections 100
 #define screenW [UIScreen mainScreen].bounds.size.width
 #define collectioncell @"collectioncell"
 @implementation ZSCycleScrollView
@@ -68,7 +69,6 @@
     _pagecontrol.numberOfPages = 3;
     _pagecontrol.currentPage = 1;
     [self addSubview:_pagecontrol];
-    self.currItem = 0;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(timerMenth) userInfo:nil repeats:YES];
 }
 
@@ -84,8 +84,25 @@
 
 //定时器
 -(void)timerMenth{
-//    [self.collectionview scrollToItemAtIndexPath:nil atScrollPosition:nil
-//                                        animated:YES];
+    // 获取当前的 indexPath
+    NSIndexPath *currentIndexPath = [[self.collectionview indexPathsForVisibleItems] lastObject];
+    NSIndexPath *currentIndexPathSet = [NSIndexPath indexPathForItem:currentIndexPath.item inSection:1];
+    
+    [self.collectionview scrollToItemAtIndexPath:currentIndexPathSet atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+    
+    // 设置下一个滚动的item的indexPath
+    NSInteger nextItem = currentIndexPathSet.item + 1;
+    NSInteger nextSection = currentIndexPathSet.section;
+    if (nextItem == self.locaImgGroup.count) {
+        // 当item等于轮播图的总个数的时候
+        // item等于0, 分区加1
+        nextItem = 0;
+        nextSection ++;
+    }
+    // NSLog(@"----%ld---%ld", nextItem, nextSection);
+    NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:nextItem inSection:nextSection];
+    [self.collectionview scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+    
 }
 
 
@@ -99,12 +116,7 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     ZSCycleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectioncell forIndexPath:indexPath];
-//    if (indexPath.item == _cycleNumber) {
-//        cell.itemimgUrl = _locaImgGroup[0];
-//    }else{
-//        cell.itemimgUrl = _locaImgGroup[indexPath.item];
-//    }
-    
+        cell.itemimgUrl = _locaImgGroup[indexPath.item];
     UILabel *lab = [[UILabel alloc]initWithFrame:cell.contentView.bounds];
     lab.textAlignment = NSTextAlignmentCenter;
     lab.text = [NSString stringWithFormat:@"第%ld个",(long)indexPath.item];
@@ -112,13 +124,12 @@
     return cell;
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    NSLog(@"%f",scrollView.contentOffset.x);
-    CGFloat tempoffset = scrollView.contentOffset.x;
-    if (tempoffset >= screenW * 0.5) {
-        
-    }
-}
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    CGFloat tempoffset = scrollView.contentOffset.x;
+//    if (tempoffset >= screenW * 0.5) {
+//        
+//    }
+//}
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
         NSLog(@"%f",scrollView.contentOffset.x);
