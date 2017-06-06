@@ -135,13 +135,13 @@
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
         NSLog(@"%f",scrollView.contentOffset.x / screenW);
     CGFloat offset = scrollView.contentOffset.x;
-    _pagecontrol.currentPage = offset / screenW - 3;
-    if (offset == screenW * (_cycleNumber - 1)) {
+    _pagecontrol.currentPage = offset / screenW - _cycleNumber;
+    if (offset <= screenW * (_cycleNumber - 1)) {
         [self.collectionview scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_cycleNumber - 1 inSection:1] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
         _pagecontrol.currentPage = _cycleNumber - 1;
 
     }
-    if (offset == screenW * (_cycleNumber * 2)) {
+    if (offset >= screenW * (_cycleNumber * 2)) {
         [self.collectionview scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
         _pagecontrol.currentPage = 0;
 
