@@ -18,11 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    ZSCycleScrollView *zsc = [ZSCycleScrollView zscycleScrollViewinitWithFrame:CGRectMake(0, 0, 375, 200)];
-    zsc.delegate = self;
+    ZSCycleScrollView *zsc = [ZSCycleScrollView zscycleScrollViewinitWithFrame:CGRectMake(0, 0, 375, 200) WithDelegate:self WithPlaceholdImg:nil];
+    zsc.pageDotColor = [UIColor yellowColor];
+    zsc.currentPageDotColor = [UIColor redColor];
 //    zsc.pageStyle = ZSCycleScrollerViewPageControllerdefent;
-    zsc.pageState = ZSCycleScrollerViewPageControllerStateRight;
-    zsc.locaImgGroup = @[@"http://pica.nipic.com/2007-12-12/20071212235955316_2.jpg",@"http://pica.nipic.com/2007-12-12/20071212235955316_2.jpg",@"http://pica.nipic.com/2007-12-12/20071212235955316_2.jpg",@"http://pica.nipic.com/2007-12-12/20071212235955316_2.jpg"];
+    zsc.pageState = ZSCycleScrollerViewPageControllerStateCenter;
+    zsc.URLImgGroup = @[@"http://pica.nipic.com/2007-12-12/20071212235955316_2.jpg",@"http://pica.nipic.com/2007-12-12/20071212235955316_2.jpg",@"http://pica.nipic.com/2007-12-12/20071212235955316_2.jpg",@"http://pica.nipic.com/2007-12-12/20071212235955316_2.jpg"];
+//    zsc.locaImgGroup = @[@"0",@"1",@"2",@"3"];
     zsc.textGroup = @[@"111111111",@"22222222222",@"33333333333333",@"4444444444"];
     [self.view addSubview:zsc];
 }

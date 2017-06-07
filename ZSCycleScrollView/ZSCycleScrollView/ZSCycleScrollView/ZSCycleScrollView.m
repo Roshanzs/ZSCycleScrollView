@@ -34,9 +34,10 @@
     return self;
 }
 
-+(instancetype)zscycleScrollViewinitWithFrame:(CGRect)frame{
++(instancetype)zscycleScrollViewinitWithFrame:(CGRect)frame WithDelegate:(id<ZSCycleScrollViewDelegate>)delegate WithPlaceholdImg:(UIImage *)placeholdimg{
     ZSCycleScrollView *zsc = [[ZSCycleScrollView alloc]initWithFrame:frame];
-    zsc.backgroundColor = [UIColor yellowColor];
+    zsc.delegate = delegate;
+    zsc.placeholdimg = placeholdimg;
     return zsc;
 }
 
@@ -65,13 +66,6 @@
 -(void)layoutSubviews{
     [self.collectionview scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
 
-//    self.pagecontrol = [[UIPageControl alloc]init];
-//    _pagecontrol.zs_width = 12 * _cycleNumber;
-//    _pagecontrol.zs_height = 10;
-//    _pagecontrol.zs_right = self.zs_right - 10;
-//    _pagecontrol.zs_bottom = self.zs_bottom - 10;
-//    _pagecontrol.numberOfPages = _cycleNumber;
-//    [self addSubview:_pagecontrol];
     [self setPageStyleWithpagestyle:_pageStyle];
 }
 
@@ -80,24 +74,15 @@
     _cycleNumber = locaImgGroup.count;
 }
 
--(void)setTextGroup:(NSArray *)textGroup{
-    _textGroup = textGroup;
+-(void)setURLImgGroup:(NSArray *)URLImgGroup{
+    _URLImgGroup = URLImgGroup;
+    _cycleNumber = URLImgGroup.count;
 }
 
--(void)setPageState:(ZSCycleScrollerViewPageControllerState)pageState{
-    _pageState = pageState;
-    switch (pageState) {
-        case ZSCycleScrollerViewPageControllerStateRight:
-            self.pagecontrol.zs_right = self.zs_right - 10;
-            break;
-        case ZSCycleScrollerViewPageControllerStateCenter:
-            self.pagecontrol.zs_center = self.zs_center;
-            break;
-   
-        default:
-            break;
-    }
-}
+//-(void)setTextGroup:(NSArray *)textGroup{
+//    _textGroup = textGroup;
+//}
+
 
 -(void)setPageStyle:(ZSCycleScrollerViewPageControllerStyte)pageStyle{
     _pageStyle = pageStyle;
@@ -128,6 +113,8 @@
             }
             _pagecontrol.zs_bottom = self.zs_bottom - 10;
             _pagecontrol.numberOfPages = _cycleNumber;
+            _pagecontrol.currentPageIndicatorTintColor = _currentPageDotColor;
+            _pagecontrol.pageIndicatorTintColor = _pageDotColor;
             [self addSubview:_pagecontrol];
  
         }
@@ -154,7 +141,7 @@
     // 设置下一个滚动的item的indexPath
     NSInteger nextItem = currentIndexPathSet.item + 1;
     NSInteger nextSection = currentIndexPathSet.section;
-    if (nextItem == self.locaImgGroup.count) {
+    if (nextItem == self.cycleNumber) {
         // 当item等于轮播图的总个数的时候
         // item等于0, 分区加1
         nextItem = 0;
@@ -177,7 +164,11 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     ZSCycleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectioncell forIndexPath:indexPath];
+    if (_locaImgGroup) {
         cell.itemimgUrl = _locaImgGroup[indexPath.item];
+    }else{
+        cell.itemimgUrl = _URLImgGroup[indexPath.item];
+    }
         cell.textStr = _textGroup[indexPath.item];
     return cell;
 }

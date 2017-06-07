@@ -31,12 +31,18 @@ typedef enum {
 @interface ZSCycleScrollView : UIView
 
 //初始化方法
-+(instancetype)zscycleScrollViewinitWithFrame:(CGRect)frame;
++(instancetype)zscycleScrollViewinitWithFrame:(CGRect)frame WithDelegate:(id<ZSCycleScrollViewDelegate>)delegate WithPlaceholdImg:(UIImage *)placeholdimg;
 
 @property(nonatomic,weak)id<ZSCycleScrollViewDelegate> delegate;
 
-//本地图片数组
+//网络图片数组
+@property(nonatomic,strong)NSArray *URLImgGroup;
+
+//本地图片组
 @property(nonatomic,strong)NSArray *locaImgGroup;
+
+//占位图片
+@property(nonatomic,strong)UIImage *placeholdimg;
 
 //文本数组
 @property(nonatomic,strong)NSArray *textGroup;
@@ -47,5 +53,10 @@ typedef enum {
 //分页控制符的样式
 @property(nonatomic,assign)ZSCycleScrollerViewPageControllerStyte pageStyle;
 
+/** 当前分页控件小圆标颜色 */
+@property (nonatomic, strong) UIColor *currentPageDotColor;
+
+/** 其他分页控件小圆标颜色 */
+@property (nonatomic, strong) UIColor *pageDotColor;
 
 @end

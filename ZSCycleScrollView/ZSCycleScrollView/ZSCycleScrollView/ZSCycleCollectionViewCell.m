@@ -40,7 +40,11 @@
 
 -(void)setItemimgUrl:(NSString *)itemimgUrl{
     _itemimgUrl = itemimgUrl;
-    [_itemimgV sd_setImageWithURL:[NSURL URLWithString:_itemimgUrl]];
+    if ([itemimgUrl hasPrefix:@"http"]) {
+        [_itemimgV sd_setImageWithURL:[NSURL URLWithString:_itemimgUrl]];
+    }else{
+        _itemimgV.image = [UIImage imageNamed:itemimgUrl];
+    }
 }
 
 -(void)setTextStr:(NSString *)textStr{
