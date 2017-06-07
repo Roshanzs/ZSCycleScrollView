@@ -2,7 +2,7 @@
     轻量级的轮播器,可以用于加载本地和网络图片轮播,简单易用
 
     用法:
-    1, 导入"ZSCycleScrollView" 文件夹.
+    1, 导入DEMO中的"ZSCycleScrollView" 文件夹.
 
     2, 创建轮播器并添加到视图上
     ZSCycleScrollView *zsc = [ZSCycleScrollView zscycleScrollViewinitWithFrame:CGRectMake(0, 0, 375, 200) WithDelegate:self WithPlaceholdImg:nil];
