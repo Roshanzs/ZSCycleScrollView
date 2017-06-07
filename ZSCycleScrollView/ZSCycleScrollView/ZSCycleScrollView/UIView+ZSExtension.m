@@ -129,6 +129,18 @@
     self.frame = newframe;
 }
 
+-(CGFloat)zs_center{
+    return self.frame.origin.x + self.frame.size.width * 0.5;
+}
+
+-(void)setZs_center:(CGFloat)zs_center{
+    CGFloat centerfloat = zs_center - (self.frame.origin.x + self.frame.size.width * 0.5);
+    CGRect newframe = self.frame;
+    newframe.origin.x += centerfloat ;
+    self.frame = newframe;
+}
+
+
 // Query other frame locations
 - (CGPoint) zs_bottomRight
 {

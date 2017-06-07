@@ -19,6 +19,7 @@
 @property (nonatomic, assign) CGFloat zs_left;
 @property (nonatomic, assign) CGFloat zs_bottom;
 @property (nonatomic, assign) CGFloat zs_right;
+@property (nonatomic, assign) CGFloat zs_center;
 @property (nonatomic, assign, readonly) CGPoint zs_bottomLeft;
 @property (nonatomic, assign, readonly) CGPoint zs_bottomRight;
 @property (nonatomic, assign, readonly) CGPoint zs_topRight;

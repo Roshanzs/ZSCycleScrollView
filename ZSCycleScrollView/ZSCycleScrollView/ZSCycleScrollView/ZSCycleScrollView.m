@@ -86,7 +86,17 @@
 
 -(void)setPageState:(ZSCycleScrollerViewPageControllerState)pageState{
     _pageState = pageState;
-//    [self setPageStateWithpagestate:pageState];
+    switch (pageState) {
+        case ZSCycleScrollerViewPageControllerStateRight:
+            self.pagecontrol.zs_right = self.zs_right - 10;
+            break;
+        case ZSCycleScrollerViewPageControllerStateCenter:
+            self.pagecontrol.zs_center = self.zs_center;
+            break;
+   
+        default:
+            break;
+    }
 }
 
 -(void)setPageStyle:(ZSCycleScrollerViewPageControllerStyte)pageStyle{
@@ -105,7 +115,17 @@
             self.pagecontrol = [[UIPageControl alloc]init];
             _pagecontrol.zs_width = 12 * _cycleNumber;
             _pagecontrol.zs_height = 10;
-            _pagecontrol.zs_right = self.zs_right - 10;
+            switch (_pageState) {
+                case ZSCycleScrollerViewPageControllerStateRight:
+                    self.pagecontrol.zs_right = self.zs_right - 10;
+                    break;
+                case ZSCycleScrollerViewPageControllerStateCenter:
+                    self.pagecontrol.zs_center = self.zs_center;
+                    break;
+                    
+                default:
+                    break;
+            }
             _pagecontrol.zs_bottom = self.zs_bottom - 10;
             _pagecontrol.numberOfPages = _cycleNumber;
             [self addSubview:_pagecontrol];
