@@ -20,7 +20,6 @@
 
 @property(nonatomic,strong)NSTimer *timer;
 
-@property(nonatomic,strong)NSIndexPath *currindex;
 
 @end
 
@@ -123,6 +122,12 @@
     return cell;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if ([self.delegate respondsToSelector:@selector(ZSCycleDidClick:Withindex:)]) {
+        [self.delegate ZSCycleDidClick:self Withindex:indexPath.item];
+    }
+}
+
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [self.timer invalidate];
 }
@@ -132,7 +137,7 @@
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-        NSLog(@"%f",scrollView.contentOffset.x / screenW);
+//        NSLog(@"%f",scrollView.contentOffset.x / screenW);
     CGFloat offset = scrollView.contentOffset.x;
     _pagecontrol.currentPage = offset / screenW - _cycleNumber;
     if (offset <= screenW * (_cycleNumber - 1)) {

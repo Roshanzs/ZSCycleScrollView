@@ -8,10 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@class ZSCycleScrollView;
+@protocol ZSCycleScrollViewDelegate <NSObject>
+
+//轮播器点击事件
+-(void)ZSCycleDidClick:(ZSCycleScrollView *)zscycleScrollView Withindex:(NSInteger)index;
+
+@end
+
+
 @interface ZSCycleScrollView : UIView
 
 //初始化方法
 +(instancetype)zscycleScrollViewinitWithFrame:(CGRect)frame;
+
+@property(nonatomic,weak)id<ZSCycleScrollViewDelegate> delegate;
 
 //本地图片数组
 @property(nonatomic,strong)NSArray *locaImgGroup;
