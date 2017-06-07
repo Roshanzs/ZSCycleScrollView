@@ -22,7 +22,7 @@
     zsc.pageDotColor = [UIColor yellowColor];
     zsc.currentPageDotColor = [UIColor redColor];
 //    zsc.pageStyle = ZSCycleScrollerViewPageControllerdefent;
-    zsc.pageState = ZSCycleScrollerViewPageControllerStateCenter;
+//    zsc.pageState = ZSCycleScrollerViewPageControllerStateRight;
     zsc.URLImgGroup = @[@"http://pica.nipic.com/2007-12-12/20071212235955316_2.jpg",@"http://pica.nipic.com/2007-12-12/20071212235955316_2.jpg",@"http://pica.nipic.com/2007-12-12/20071212235955316_2.jpg",@"http://pica.nipic.com/2007-12-12/20071212235955316_2.jpg"];
 //    zsc.locaImgGroup = @[@"0",@"1",@"2",@"3"];
     zsc.textGroup = @[@"111111111",@"22222222222",@"33333333333333",@"4444444444"];

@@ -59,4 +59,6 @@ typedef enum {
 /** 其他分页控件小圆标颜色 */
 @property (nonatomic, strong) UIColor *pageDotColor;
 
+//清除缓存
++ (void)clearImagesCache;
 @end

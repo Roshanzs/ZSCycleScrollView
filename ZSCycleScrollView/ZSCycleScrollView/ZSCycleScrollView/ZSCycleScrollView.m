@@ -9,6 +9,10 @@
 #import "ZSCycleScrollView.h"
 #import "ZSCycleCollectionViewCell.h"
 #import "UIView+ZSExtension.h"
+#import "SDImageCache.h"
+#import "UIImageView+WebCache.h"
+
+
 @interface ZSCycleScrollView()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic,strong)UICollectionView *collectionview;
@@ -79,11 +83,6 @@
     _cycleNumber = URLImgGroup.count;
 }
 
-//-(void)setTextGroup:(NSArray *)textGroup{
-//    _textGroup = textGroup;
-//}
-
-
 -(void)setPageStyle:(ZSCycleScrollerViewPageControllerStyte)pageStyle{
     _pageStyle = pageStyle;
     [self setPageStyleWithpagestyle:pageStyle];
@@ -147,7 +146,6 @@
         nextItem = 0;
         nextSection ++;
     }
-    // NSLog(@"----%ld---%ld", nextItem, nextSection);
     NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:nextItem inSection:nextSection];
     [self.collectionview scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
     _pagecontrol.currentPage = nextItem;
@@ -188,7 +186,6 @@
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-//        NSLog(@"%f",scrollView.contentOffset.x / screenW);
     CGFloat offset = scrollView.contentOffset.x;
     _pagecontrol.currentPage = offset / screenW - _cycleNumber;
     if (offset <= screenW * (_cycleNumber - 1)) {
@@ -202,5 +199,11 @@
 
     }
 }
+
++ (void)clearImagesCache
+{
+    [[[SDWebImageManager sharedManager] imageCache] clearMemory];
+}
+
 
 @end
