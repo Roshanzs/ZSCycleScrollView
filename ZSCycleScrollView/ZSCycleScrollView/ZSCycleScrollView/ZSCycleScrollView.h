@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    ZSCycleScrollerViewPageControllerStateCenter,
+    ZSCycleScrollerViewPageControllerStateRight
+}ZSCycleScrollerViewPageControllerState;
+
+typedef enum {
+    ZSCycleScrollerViewPageControllerdefent,//默认样式
+    ZSCycleScrollerViewPageControllerhide,//隐藏pager
+}ZSCycleScrollerViewPageControllerStyte;
+
+
 @class ZSCycleScrollView;
 @protocol ZSCycleScrollViewDelegate <NSObject>
 
@@ -29,4 +40,12 @@
 
 //文本数组
 @property(nonatomic,strong)NSArray *textGroup;
+
+//分页控制符的位置
+@property(nonatomic,assign)ZSCycleScrollerViewPageControllerState pageState;
+
+//分页控制符的样式
+@property(nonatomic,assign)ZSCycleScrollerViewPageControllerStyte pageStyle;
+
+
 @end

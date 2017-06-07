@@ -65,13 +65,14 @@
 -(void)layoutSubviews{
     [self.collectionview scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
 
-    self.pagecontrol = [[UIPageControl alloc]init];
-    _pagecontrol.zs_width = 12 * _cycleNumber;
-    _pagecontrol.zs_height = 10;
-    _pagecontrol.zs_right = self.zs_right - 10;
-    _pagecontrol.zs_bottom = self.zs_bottom - 10;
-    _pagecontrol.numberOfPages = _cycleNumber;
-    [self addSubview:_pagecontrol];
+//    self.pagecontrol = [[UIPageControl alloc]init];
+//    _pagecontrol.zs_width = 12 * _cycleNumber;
+//    _pagecontrol.zs_height = 10;
+//    _pagecontrol.zs_right = self.zs_right - 10;
+//    _pagecontrol.zs_bottom = self.zs_bottom - 10;
+//    _pagecontrol.numberOfPages = _cycleNumber;
+//    [self addSubview:_pagecontrol];
+    [self setPageStyleWithpagestyle:_pageStyle];
 }
 
 -(void)setLocaImgGroup:(NSArray *)locaImgGroup{
@@ -81,6 +82,45 @@
 
 -(void)setTextGroup:(NSArray *)textGroup{
     _textGroup = textGroup;
+}
+
+-(void)setPageState:(ZSCycleScrollerViewPageControllerState)pageState{
+    _pageState = pageState;
+//    [self setPageStateWithpagestate:pageState];
+}
+
+-(void)setPageStyle:(ZSCycleScrollerViewPageControllerStyte)pageStyle{
+    _pageStyle = pageStyle;
+    [self setPageStyleWithpagestyle:pageStyle];
+}
+
+//设置page
+-(void)setPageStyleWithpagestyle:(ZSCycleScrollerViewPageControllerStyte)pagestyle{
+    if (_pagecontrol) {
+        [_pagecontrol removeFromSuperview];
+    }
+    switch (pagestyle) {
+        case ZSCycleScrollerViewPageControllerdefent:
+        {
+            self.pagecontrol = [[UIPageControl alloc]init];
+            _pagecontrol.zs_width = 12 * _cycleNumber;
+            _pagecontrol.zs_height = 10;
+            _pagecontrol.zs_right = self.zs_right - 10;
+            _pagecontrol.zs_bottom = self.zs_bottom - 10;
+            _pagecontrol.numberOfPages = _cycleNumber;
+            [self addSubview:_pagecontrol];
+ 
+        }
+            break;
+        case ZSCycleScrollerViewPageControllerhide:
+        {
+        }
+            break;
+
+            
+        default:
+            break;
+    }
 }
 
 //定时器
