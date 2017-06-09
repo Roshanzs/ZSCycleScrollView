@@ -12,7 +12,8 @@
 #import "SDImageCache.h"
 #import "UIImageView+WebCache.h"
 
-
+#define Wscreen [UIScreen mainScreen].bounds.size.width
+#define Hscreen [UIScreen mainScreen].bounds.size.height
 @interface ZSCycleScrollView()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic,strong)UICollectionView *collectionview;
@@ -98,10 +99,10 @@
         {
             self.pagecontrol = [[UIPageControl alloc]init];
             _pagecontrol.zs_width = 12 * _cycleNumber;
-            _pagecontrol.zs_height = 10;
+            _pagecontrol.zs_height = 10.0/667.0*Hscreen;
             switch (_pageState) {
                 case ZSCycleScrollerViewPageControllerStateRight:
-                    self.pagecontrol.zs_right = self.zs_right - 10;
+                    self.pagecontrol.zs_right = self.zs_right - 10.0/375.0*Wscreen;
                     break;
                 case ZSCycleScrollerViewPageControllerStateCenter:
                     self.pagecontrol.zs_center = self.zs_center;
@@ -110,7 +111,7 @@
                 default:
                     break;
             }
-            _pagecontrol.zs_bottom = self.zs_bottom - 10;
+            _pagecontrol.zs_bottom = self.zs_bottom - 10.0/375.0*Wscreen;
             _pagecontrol.numberOfPages = _cycleNumber;
             _pagecontrol.currentPageIndicatorTintColor = _currentPageDotColor;
             _pagecontrol.pageIndicatorTintColor = _pageDotColor;

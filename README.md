@@ -6,7 +6,7 @@
 
     2, 创建轮播器并添加到视图上
     ZSCycleScrollView *zsc = [ZSCycleScrollView zscycleScrollViewinitWithFrame:CGRectMake(0, 0, 375, 200) WithDelegate:self WithPlaceholdImg:nil];
-       [self.view addSubview:zsc];
+    [self.view addSubview:zsc];
        
     3, 设置自定义样式\n
     zsc.pageStyle = ZSCycleScrollerViewPageControllerdefent;//分页指示器的形式

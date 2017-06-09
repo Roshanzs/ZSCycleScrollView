@@ -9,6 +9,8 @@
 #import "ZSCycleCollectionViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "UIView+ZSExtension.h"
+#define Wscreen [UIScreen mainScreen].bounds.size.width
+#define Hscreen [UIScreen mainScreen].bounds.size.height
 @interface ZSCycleCollectionViewCell()
 @property(nonatomic,strong)UIImageView *itemimgV;
 @property(nonatomic,strong)UILabel *itemlab;
@@ -31,10 +33,10 @@
     UILabel *itemlab = [[UILabel alloc]init];
     itemlab.textColor = [UIColor whiteColor];
     self.itemlab = itemlab;
-    itemlab.zs_width = self.contentView.zs_width - 20;
-    itemlab.zs_height = 20;
-    itemlab.zs_bottom = self.contentView.zs_bottom - 8;
-    itemlab.zs_x = self.contentView.zs_x + 8;
+    itemlab.zs_width = self.contentView.zs_width - 20.0/375.0*Wscreen ;
+    itemlab.zs_height = 20.0/667.0*Hscreen;
+    itemlab.zs_bottom = self.contentView.zs_bottom - 8.0/667.0*Hscreen;
+    itemlab.zs_x = self.contentView.zs_x + 8.0/375.0*Wscreen;
     [self.contentView addSubview:itemlab];
 }
 
